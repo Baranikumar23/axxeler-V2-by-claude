@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nook | Chennai's Premier Pickleball Club</title>
+    <meta name="description"
+        content="Chennai's Premier Pickleball Club. Two world-class courts. One community. All skill levels welcome.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E77729;
+            --primary-hover: #d26a23;
+            --dark: #1A1A1A;
+            --light: #FAFAF8;
+            --white: #FFFFFF;
+            --gray: #666666;
+            --light-gray: #EAEAEA;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.01em;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: var(--gray);
+        }
+
+        /* General Utilities */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .bg-white {
+            background-color: var(--white);
+        }
+
+        .bg-light {
+            background-color: var(--light);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 119, 41, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+            background-color: transparent;
+        }
+
+        .navbar.scrolled {
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--dark);
+            letter-spacing: -0.03em;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--dark);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-color: var(--dark);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.8)), url('https://images.unsplash.com/photo-1554068865-c3ce14d12853?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        /* Decorative Court pattern using CSS */
+        .hero-pattern {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-pattern::before,
+        .hero-pattern::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-pattern::before {
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+        }
+
+        .hero-pattern::after {
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 2px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-actions .btn-outline {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .hero-actions .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* About Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            border-color: rgba(231, 119, 41, 0.2);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background-color: rgba(231, 119, 41, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .about-story {
+            max-width: 700px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        /* Courts Section */
+        .courts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .court-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .court-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .court-img {
+            height: 250px;
+            background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .court-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .court-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .court-info {
+            padding: 2rem;
+        }
+
+        .court-details {
+            list-style: none;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .court-details li {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .court-details li::before {
+            content: '•';
+            color: var(--primary);
+        }
+
+        /* Location Section */
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .map-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 400px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .map-card iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .location-info {
+            padding: 2rem;
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--light-gray);
+        }
+
+        .info-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-group h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-group p {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        /* Social Bar */
+        .social-bar {
+            padding: 3rem 0;
+            background-color: var(--white);
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+        }
+
+        .social-link svg {
+            width: 28px;
+            height: 28px;
+            transition: var(--transition);
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Membership Section */
+        .membership-section {
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .membership-section h2 {
+            color: var(--white);
+            text-align: center;
+        }
+
+        .membership-section p {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        select.form-control option {
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .radio-label input[type="radio"] {
+            accent-color: var(--primary);
+            width: 18px;
+            height: 18px;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .alert-success {
+            display: none;
+            background-color: rgba(231, 119, 41, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(231, 119, 41, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111111;
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-link {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+        }
+
+        .nav-actions.mobile {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .location-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .nav-actions.mobile {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s ease;
+                padding: 2rem;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 2rem;
+                font-size: 1.25rem;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Nook<span>.</span></a>
+
+            <div class="nav-menu" id="nav-menu">
+                <div class="nav-links">
+                    <a href="#courts" class="nav-link">Courts</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#location" class="nav-link">Location</a>
+                </div>
+                <div class="nav-actions mobile" id="mobile-actions">
+                    <a href="#membership" class="btn btn-outline" style="margin-bottom: 10px;">Book Now</a>
+                    <a href="#membership" class="btn btn-primary">Become a Member</a>
+                </div>
+            </div>
+
+            <div class="nav-actions" id="desktop-actions">
+                <a href="#membership" class="btn btn-outline">Book Now</a>
+                <a href="#membership" class="btn btn-primary">Become a Member</a>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Chennai's Premier Pickleball Club</h1>
+                <p>Two world-class courts. One community. All skill levels welcome.</p>
+                <div class="hero-actions">
+                    <a href="#membership" class="btn btn-primary">Book Now</a>
+                    <a href="#membership" class="btn btn-outline">Become a Member</a>
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down">
+            Scroll to Explore
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section bg-white" id="about">
+        <div class="container">
+            <div class="fade-in" style="text-align: center;">
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </div>
+                    <h3>2 Premium Courts</h3>
+                    <p>Professional-grade surfacing and optimal lighting for the perfect game.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                        </svg>
+                    </div>
+                    <h3>All Skill Levels</h3>
+                    <p>Whether you're holding a paddle for the first time or a seasoned pro.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3>Expert Coaching</h3>
+                    <p>Improve your skills faster with clinics and 1-on-1 sessions from pros.</p>
+                </div>
+                <div class="feature-card fade-in" style="transition-delay: 0.3s;">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3>Community Driven</h3>
+                    <p>Post-game socials, tournaments, and a vibe you won't find anywhere else.</p>
+                </div>
+            </div>
+
+            <div class="about-story fade-in">
+                <p>Nook was born out of a simple passion for the game and a desire to bring people together. Located in
+                    the heart of Chennai, we are more than just a sports facility. We're a boutique fitness sanctuary
+                    dedicated entirely to pickleball. Come drop in, meet new friends, and experience the fastest-growing
+                    sport in the world.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courts Section -->
+    <section class="section bg-light" id="courts">
+        <div class="container">
+            <div class="fade-in" style="margin-bottom: 3rem;">
+                <h2>Our Courts</h2>
+                <p>Designed for performance.</p>
+            </div>
+
+            <div class="courts-grid">
+                <!-- Court 1 -->
+                <div class="court-card fade-in">
+                    <div class="court-img">
+                        <img src="https://images.unsplash.com/photo-1614050201103-125026ffab3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Pickleball Court 1">
+                        <div class="court-badge">Court 1</div>
+                    </div>
+                    <div class="court-info">
+                        <h3>The Stadium Court</h3>
+                        <p>Our premier showcase court perfect for competitive matches and tournaments.</p>
+                        <ul class="court-details">
+                            <li>8-layered Synthetic Court</li>
+                            <li>Tournament LED Lighting</li>
+                            <li>Viewing Area Access</li>
+                        </ul>
+                        <a href="#book" class="btn btn-primary btn-full">Book This Court</a>
+                    </div>
+                </div>
+
+                <!-- Court 2 -->
+                <div class="court-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="court-img">
+                        <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Pickleball Court 2">
+                        <div class="court-badge">Court 2</div>
+                    </div>
+                    <div class="court-info">
+                        <h3>The Studio Court</h3>
+                        <p>An intimate setup ideal for practice sessions, clinics, and casual play.</p>
+                        <ul class="court-details">
+                            <li>8-layered Synthetic Court</li>
+                            <li>Standard LED Lighting</li>
+                            <li>Quiet Zone</li>
+                        </ul>
+                        <a href="#book" class="btn btn-primary btn-full">Book This Court</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section bg-white" id="location">
+        <div class="container">
+            <div class="fade-in" style="margin-bottom: 3rem;">
+                <h2>Find Us in Chennai</h2>
+                <p>Your local pickleball destination.</p>
+            </div>
+
+            <div class="location-container">
+                <div class="map-card fade-in">
+                    <!-- Placeholder Map Coordinates for Chennai -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124415.52928373302!2d80.17086684784654!3d13.083658511796122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <div class="location-info fade-in" style="transition-delay: 0.2s;">
+                    <div class="info-group">
+                        <h4>Address</h4>
+                        <p>Eswaran street, Muthamizh Nagar<br>Karapakkam, Chennai-600097</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4>Operating Hours</h4>
+                        <p>Open 7 days a week, 24 hours a day</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4>Contact Us</h4>
+                        <p>Phone: +91 7550051330<br>Email: nookpickleball@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links Bar -->
+    <div class="social-bar">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/nookpickleball/" target="_blank" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    Instagram
+                </a>
+                <a href="#" class="social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Membership Section -->
+    <section class="section membership-section" id="membership">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Join the Nook Community</h2>
+                <p>Register your interest and become part of Chennai's premier pickleball club.</p>
+
+                <div class="form-container">
+                    <div id="form-success" class="alert-success">
+                        Welcome to Nook! We'll be in touch soon.
+                    </div>
+
+                    <form id="membership-form">
+                        <div class="form-group">
+                            <label class="form-label" for="fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="Jane Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="jane@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="+91 98765 43210" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="city">City / Area in Chennai</label>
+                            <input type="text" id="city" class="form-control" placeholder="e.g., Anna Nagar, Adyar"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="experience">Pickleball Experience Level</label>
+                            <select id="experience" class="form-control" required>
+                                <option value="" disabled selected>Select your level</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="never">Never Played</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="frequency">How many days per week do you play?</label>
+                            <select id="frequency" class="form-control" required>
+                                <option value="" disabled selected>Select frequency</option>
+                                <option value="1-2">1–2 days</option>
+                                <option value="3-4">3–4 days</option>
+                                <option value="5+">5+ days</option>
+                                <option value="exploring">Just exploring</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Do you own a paddle?</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="paddle" value="yes" required> Yes
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="paddle" value="no"> No
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="paddle" value="rent"> Renting from club
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="source">How did you hear about us?</label>
+                            <select id="source" class="form-control" required>
+                                <option value="" disabled selected>Select source</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="google">Google</option>
+                                <option value="friend">Friend / Word of Mouth</option>
+                                <option value="walkin">Walk-in</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Any message or questions? (Optional)</label>
+                            <textarea id="message" class="form-control" placeholder="Your message here..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">Apply for Membership</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="footer-logo">Nook<span>.</span></a>
+            <p class="footer-tagline">Chennai's Pickleball Home</p>
+
+            <div class="footer-links">
+                <a href="#courts" class="footer-link">Courts</a>
+                <a href="#about" class="footer-link">About Us</a>
+                <a href="#location" class="footer-link">Location</a>
+                <a href="#membership" class="footer-link">Membership</a>
+            </div>
+
+            <div class="social-links" style="margin-bottom: 2rem;">
+                <a href="https://www.instagram.com/nookpickleball/" target="_blank" class="social-link" style="color: var(--white);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    Instagram
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2025 Nook. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Sticky Navbar on Scroll
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Make sure navbar has appropriate styling based on initial position (if page refreshed mid-scroll)
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            }
+
+            // Scroll Animations (Intersection Observer)
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            const appearOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            fadeElements.forEach(el => {
+                appearOnScroll.observe(el);
+            });
+
+            // Form Submission Handling
+            const form = document.getElementById('membership-form');
+            const successAlert = document.getElementById('form-success');
+
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // Hide form and show success message
+                    form.style.display = 'none';
+                    successAlert.style.display = 'block';
+
+                    // Scroll slightly to ensure success message is visible
+                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }
+
+            // Re-order DOM elements on mobile so buttons are in the menu
+            // Handled efficiently with CSS (nav-actions mobile vs desktop classes)
+        });
+    </script>
+</body>
+
+</html>
